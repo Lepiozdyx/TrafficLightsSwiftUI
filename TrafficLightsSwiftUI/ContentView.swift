@@ -40,21 +40,22 @@ struct ContentView: View {
             startButtonText = "NEXT"
         }
         
-        switch currentLight {
-        case .red:
-            greenOpacity = 0.3
-            redOpacity = 1
-            currentLight = .yellow
-        case .yellow:
-            redOpacity = 0.3
-            yellowOpacity = 1
-            currentLight = .green
-        case .green:
-            yellowOpacity = 0.3
-            greenOpacity = 1
-            currentLight = .red
+        withAnimation {
+            switch currentLight {
+            case .red:
+                greenOpacity = 0.3
+                redOpacity = 1
+                currentLight = .yellow
+            case .yellow:
+                redOpacity = 0.3
+                yellowOpacity = 1
+                currentLight = .green
+            case .green:
+                yellowOpacity = 0.3
+                greenOpacity = 1
+                currentLight = .red
+            }
         }
-        
     }
     
 }
