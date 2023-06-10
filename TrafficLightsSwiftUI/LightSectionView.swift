@@ -10,11 +10,13 @@ import SwiftUI
 struct LightSectionView: View {
     let color: Color
     let text: String
+    let opacity: Double
     
     var body: some View {
         ZStack {
             Circle()
                 .foregroundColor(color)
+                .opacity(opacity)
                 .frame(width: 150)
                 .overlay(Circle().stroke(lineWidth: 1))
                 .shadow(color: color, radius: 20)
@@ -29,6 +31,6 @@ struct LightSectionView: View {
 
 struct LightSectionView_Previews: PreviewProvider {
     static var previews: some View {
-        LightSectionView(color: .green, text: "GO")
+        LightSectionView(color: .green, text: "GO", opacity: 1)
     }
 }
