@@ -28,9 +28,9 @@ struct ContentView: View {
                     .fontWeight(.bold)
                     .foregroundColor(Color.white)
             }
-                .frame(width: 200.0, height: 50.0)
-                .background(.blue)
-                .clipShape(Capsule())
+            .frame(width: 200.0, height: 50.0)
+            .background(.blue)
+            .clipShape(Capsule())
         }
         .padding()
     }
