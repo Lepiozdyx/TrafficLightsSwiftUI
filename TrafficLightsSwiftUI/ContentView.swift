@@ -10,16 +10,25 @@ import SwiftUI
 struct ContentView: View {
 
     @State private var startButtonText = "START"
-    @State private var currentLight: CurrentLight = .red
-    @State private var redOpacity = 0.3
-    @State private var yellowOpacity = 0.3
-    @State private var greenOpacity = 0.3
+    @State private var currentLight: CurrentLight = .off
     
     var body: some View {
         VStack {
-            LightSectionView(color: .red, text: "STOP", opacity: redOpacity)
-            LightSectionView(color: .yellow, text: "WAIT", opacity: yellowOpacity)
-            LightSectionView(color: .green, text: "GO", opacity: greenOpacity)
+            LightSectionView(
+                color: .red,
+                text: "STOP",
+                opacity: currentLight == .red ? 1 : 0.3
+            )
+            LightSectionView(
+                color: .yellow,
+                text: "WAIT",
+                opacity: currentLight == .yellow ? 1 : 0.3
+            )
+            LightSectionView(
+                color: .green,
+                text: "GO",
+                opacity: currentLight == .green ? 1 : 0.3
+            )
             Spacer()
             
             Button(action: pressingButton) {
@@ -42,18 +51,10 @@ struct ContentView: View {
         
         withAnimation {
             switch currentLight {
-            case .red:
-                greenOpacity = 0.3
-                redOpacity = 1
-                currentLight = .yellow
-            case .yellow:
-                redOpacity = 0.3
-                yellowOpacity = 1
-                currentLight = .green
-            case .green:
-                yellowOpacity = 0.3
-                greenOpacity = 1
-                currentLight = .red
+            case .off: currentLight = .red
+            case .red: currentLight = .yellow
+            case .yellow: currentLight = .green
+            case .green: currentLight = .red
             }
         }
     }
@@ -62,7 +63,7 @@ struct ContentView: View {
 
 extension ContentView {
     private enum CurrentLight {
-        case red, yellow, green
+        case off, red, yellow, green
     }
 }
 
