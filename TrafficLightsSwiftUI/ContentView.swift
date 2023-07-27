@@ -61,14 +61,14 @@ struct ContentView: View {
     
 }
 
-extension ContentView {
-    private enum CurrentLight {
-        case off, red, yellow, green
-    }
-}
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+extension ContentView {
+    private enum CurrentLight {
+        case off, red, yellow, green
     }
 }
